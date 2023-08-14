@@ -1,0 +1,4 @@
+name: qHGTweaks
+version: '${project.version}'
+main: gg.quartzdev.qhgtweaks.qHGTweaks
+api-version: '1.20'
