@@ -1,0 +1,11 @@
+name: '${project.artifactId}'
+version: '${project.version}'
+main: gg.quartzdev.qhgtweaks.qHGTweaks
+authors: [QarthO]
+website: https://quartzdev.gg/
+description: HungerGames add-on for custom tweaks.
+api-version: '1.19'
+dependencies:
+  - name: HungerGames
+    required: true
+prefix: '${project.artifactId}'
