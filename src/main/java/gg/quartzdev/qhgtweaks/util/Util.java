@@ -12,10 +12,16 @@ public class Util {
      * Logs a general message
      * @param msg
      */
+    @SuppressWarnings("deprecation")
     public static void log(String msg){
         MiniMessage mm = MiniMessage.miniMessage();
         Component parse = mm.deserialize(PREFIX + " " + msg);
-        Bukkit.getConsoleSender().sendMessage(parse);
+//        String rawMsg = LegacyComponentSerializer.legacySection().serialize(parse);
+        Bukkit.getConsoleSender().sendMessage(parse);     // Paper forks only
+    }
+
+    public static void log(Component msg){
+        Bukkit.getConsoleSender().sendMessage(msg);
     }
 
     /**
@@ -38,6 +44,22 @@ public class Util {
         Component parse = mm.deserialize(PREFIX + " <red>" + msg);
         Bukkit.getConsoleSender().sendMessage(parse);
 //        TODO: log errors to a file
+    }
+
+    public static void error(String msg, boolean stderr){
+        MiniMessage mm = MiniMessage.miniMessage();
+        Component parse = mm.deserialize(PREFIX + " <red>" + msg);
+        Bukkit.getConsoleSender().sendMessage(parse);
+//        TODO: log errors to a file
+    }
+
+    public static void error(StackTraceElement[] stackTrace){
+        for(StackTraceElement element : stackTrace){
+            MiniMessage mm = MiniMessage.miniMessage();
+            Component parse = mm.deserialize(PREFIX + " <red>" + element.toString());
+            Bukkit.getConsoleSender().sendMessage(parse);
+
+        }
     }
 
     /**
